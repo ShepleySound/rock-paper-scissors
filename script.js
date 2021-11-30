@@ -61,31 +61,83 @@ function playRound(playerMove, computerMove){
     }
 }
 
-function game(){
-    playerWins = 0;
-    computerWins = 0;
-    for (i = 1; i <= 5; i++){
-        console.log(`Round ${i}`)
-        playerSelection = playerPlay();
-        computerSelection = computerPlay();
-        roundResult = playRound(playerSelection, computerSelection)
+function WinDecider(){
+    if (playerWins == 5){
+        winAnnounce.textContent = "YOU WIN!"
+        return true
+    }
+    else if (computerWins == 5){
+        winAnnounce.textContent = "YOU LOSE!"
+        return true;
+    }
+    else return false;
+}
+
+function Game(){
+    let winnerDecided = WinDecider();
+    if (!winnerDecided){
+        round++;
         if (roundResult == WIN){
-            playerWins++
+            playerWins++;
+            resultAnnounce.textContent = "WIN";
         }
         if (roundResult == LOSS){
-            computerWins++
+            computerWins++;
+            resultAnnounce.textContent = "LOSE";
         }
-        console.log(`Player: ${playerSelection}, PC: ${computerSelection}`)
-        console.log(`Player: ${playerWins}, PC: ${computerWins}`)
+        if (roundResult == TIE){
+            resultAnnounce.textContent = "TIE";
+        }
+        playerScore.textContent = playerWins;
+        pcScore.textContent = computerWins;
     }
-    if (playerWins > computerWins){
-        console.log("You win!")
-    }
-    else if (computerWins > playerWins){
-        console.log("You lose!")
-    }
-    else{
-        console.log("It's a tie!")
+    sameRound = WinDecider()
+    if (sameRound){
+        nextButtonDiv.appendChild(playAgainButton);
     }
 }
+
+function GameReset(){
+    playerWins = 0;
+    computerWins = 0;
+    round = 1;
+    roundResult = null;
+    nextButtonDiv.removeChild(playAgainButton);
+    winAnnounce.textContent = ""
+    Game();
+}
+
+/// Game Data/Stats
+let playerWins = 0;
+let computerWins = 0;
+let round = 1;
+let roundResult;
+let playerSelection, computerSelection;
+const playerScore = document.querySelector(".score.player");
+const pcScore = document.querySelector(".score.pc");
+const resultAnnounce = document.querySelector(".announcer");
+const winAnnounce = document.querySelector(".win-text");
+const playAgainButton = document.createElement('button');
+playAgainButton.textContent = "Play Again";
+const nextButtonDiv = document.querySelector('.next-button');
+playAgainButton.classList.add("choice-button");
+
+
+const selections = document.querySelectorAll(".selection")
+selections.forEach((selection) => {
+    console.log(selection.id)
+    selection.addEventListener("click", function(e) {
+        playerSelection = e.target.id
+        computerSelection = computerPlay()
+        roundResult = playRound(playerSelection, computerSelection)
+        Game();
+    })
+    selection.addEventListener("click", function() {
+        resultAnnounce.classList.remove("transition");
+        void resultAnnounce.offsetWidth;
+        resultAnnounce.classList.add("transition");
+    })
+})
+
+playAgainButton.addEventListener("click", GameReset);
 

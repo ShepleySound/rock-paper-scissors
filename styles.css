@@ -1,0 +1,129 @@
+body{
+    margin: 0;
+    background-color: #272727;
+    display: flex;
+    flex-direction: column;
+}
+
+.results{
+    display: flex;
+    align-items: center;
+    background-color: #272727;
+    flex-shrink: 0;
+}
+
+.title{
+    margin: 0;
+    font-size: 3em;
+}
+
+.score{
+    font-size: 3em;
+}
+
+
+.scorecard-player, .scorecard-pc{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #747474;
+    padding: 8px;
+    width: 130px;
+    flex-shrink: 0;
+}
+
+.scorecard-player{
+    margin-right: auto;
+}
+
+.scorecard-pc{
+    margin-left: auto
+}
+
+.announcer{
+    margin: auto;
+    font-size: 2em;
+    opacity: 0;
+    color: white
+}
+
+.button-container{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    flex-wrap: wrap;
+}
+
+.button{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label{
+    font-size: 2em;
+    margin-left: 10px;
+    color: #747474;
+    pointer-events: none;
+}
+
+.selection{
+    padding: 30px;
+    margin: 20px;
+    margin-bottom: -40px;
+    border-radius: 10%;
+    border: 3px inset grey;
+    font-size: 3em;
+    background-color: #272727;
+}
+
+.selection:hover{
+    box-shadow: 1px 1px 3px;
+}
+
+.selection:active{
+    box-shadow: 0px 0px 3px;
+}
+
+.transition{
+    animation: fadeinout 2s 1 forwards;
+}
+
+#Rock{
+    color: #FFE400;
+}
+
+#Paper{
+    color: #14A76C;
+}
+
+#Scissors{
+    color: #FF652F;
+}
+
+@keyframes fadeinout {
+    0% { opacity: 0; font-size: 0px; }
+    50% { opacity: 1; font-size: 2em; }
+    100% { opacity: 0; font-size: 1em;}
+}
+
+.win-screen{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+    margin: 10px;
+}
+
+.win-text{
+    margin: auto;
+    font-size: 3em;
+    color: white;
+}
+
+.choice-button{
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10%;
+    font-size: 2em;
+}

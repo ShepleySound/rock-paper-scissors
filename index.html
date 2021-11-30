@@ -4,11 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="">
-    <script src="script.js"></script>
-    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" crossorigin="anonymous">
+    <script src="script.js" defer></script>
+    <title>Rock Paper Scissors</title>
 </head>
 <body>
-    <button onclick="game()">PLAY</button>
+    <div class="results">
+        <div class="scorecard-player">
+            <h1 class="title">Player</h1>
+            <div class="score player">0</div>
+        </div>
+        <div class="announcer"></div>
+        <div class="scorecard-pc">
+            <h1 class="title">PC</h1>
+            <div class="score pc">0</div>
+        </div>
+    </div>
+    <div class="button-container">
+        <div class="button">
+            <button class="selection" id="Rock"><i class="far fa-hand-rock" id="Rock"></i></button>
+            <label>rock</label>
+        </div>
+        <div class="button">
+            <button class="selection" id="Paper"><i class="far fa-hand-paper" id="Paper"></i></button>
+            <label>paper</label>
+        </div>
+        <div class="button">
+            <button class="selection" id="Scissors"><i class="far fa-hand-scissors" id="Scissors"></i></button>
+            <label>scissors</label>
+        </div>
+    </div>
+    <div class="win-screen">
+        <div class="win-text"></div>
+        <div class="next-button"></div>
+    </div>
 </body>
 </html>
